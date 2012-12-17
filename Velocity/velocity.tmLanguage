@@ -22,7 +22,7 @@
 			<key>match</key>
 			<string>\$\!?\{?[[a-zA-Z]a-zA-Z0-9_]+(\}|\b)</string>
 			<key>name</key>
-			<string>variable</string>
+			<string>user.constant</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -78,18 +78,60 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>begin</key>
+					<string>(\$)(\{)([a-zA-Z0-9_]+)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.velocity</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.velocity</string>
+						</dict>
+					</dict>
+					<key>end</key>
+					<string>\}</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.velocity</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>variable.complex.velocity</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>$self</string>
+						</dict>
+						<dict>
+							<key>match</key>
+							<string>.</string>
+							<key>name</key>
+							<string>variable</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>comment</key>
+					<string>things like $var.function</string>
+					<key>match</key>
+					<string>\.([a-zA-Z]+)</string>
+					<key>name</key>
+					<string>entity.name.function.velocity</string>
+				</dict>
+				<dict>
 					<key>match</key>
 					<string>\\.</string>
 					<key>name</key>
-					<string>constant.character.escape.untitled</string>
-				</dict>
-				<dict>
-					<key>begin</key>
-					<string>\$\{</string>
-					<key>end</key>
-					<string>\}</string>
-					<key>name</key>
-					<string>source.velocity.embedded.source</string>
+					<string>constant.character.escape.velocity</string>
 				</dict>
 			</array>
 		</dict>
@@ -104,6 +146,12 @@
 			<string>(?i)\b(TRUE|FALSE|NULL|__(FILE|FUNCTION|CLASS|METHOD|LINE)__|ON|OFF|YES|NO|NL|BR|TAB)\b</string>
 			<key>name</key>
 			<string>constant.language.velocity</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(\$|\&lt;|\&gt;)</string>
+			<key>name</key>
+			<string>invalid.velocity</string>
 		</dict>
 	</array>
 	<key>scopeName</key>
