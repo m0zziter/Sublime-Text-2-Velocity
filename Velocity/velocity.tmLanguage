@@ -34,9 +34,25 @@
 		</dict>
 		<dict>
 			<key>begin</key>
+			<string>\/\/</string>
+			<key>end</key>
+			<string>\n</string>
+			<key>name</key>
+			<string>comment.line</string>
+		</dict>
+		<dict>
+			<key>begin</key>
 			<string>\#\*</string>
 			<key>end</key>
 			<string>\*\#</string>
+			<key>name</key>
+			<string>comment.block</string>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>\&lt;\!\-\-</string>
+			<key>end</key>
+			<string>\-\-\&gt;</string>
 			<key>name</key>
 			<string>comment.block</string>
 		</dict>
